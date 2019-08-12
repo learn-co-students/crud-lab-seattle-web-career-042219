@@ -5,56 +5,50 @@ class Review extends Component {
     text: "",
     editMode: false
   };
-
   handleDeleteClick = () => {
-    // e.preventDefault();
     this.props.deleteReview(this.props.review.id);
   };
 
   handleEditClick = e => {
-    e.preventDefault();
-    const review = this.props.reviews.find(
-      review => review.id === e.target.dataset.id
-    );
-    this.setState({ text: review.text, editMode: true });
+    const review = this.props.reviews.find(x => x.id === e.target.dataset.id);
+    this.setState({ editMode: true, text: review.text });
   };
 
-  handleOnChange = e => {
+  handleChange = e => {
     this.setState({ text: e.target.value });
   };
 
-  handleOnSubmit = e => {
+  handleSubmit = e => {
     e.preventDefault();
     this.props.updateReview({
       text: this.state.text,
       restaurantId: this.props.restaurantId,
       id: this.props.review.id
     });
-    this.setState({ editMode: false, text: "" });
+    this.setState({ text: "", editMode: false });
   };
 
   render() {
     const { review } = this.props;
-
     return (
       <div>
         <li>{review.text}</li>
+
         <button onClick={this.handleEditClick} data-id={review.id}>
           {" "}
-          Edit{" "}
+          Edit Review{" "}
         </button>
-        <button onClick={this.handleDeleteClick}> Delete </button>
+        <button onClick={this.handleDeleteClick}> Delete Review </button>
         {this.state.editMode ? (
           <div>
-            <form onSubmit={this.handleOnSubmit}>
-              <label htmlFor="the-submit">Edit: </label>
+            <form onSubmit={this.handleSubmit}>
               <input
-                id="the-submit"
                 type="text"
+                id="editReview"
                 value={this.state.text}
-                onChange={this.handleOnChange}
+                onChange={this.handleChange}
               />
-              <input type="submit" value="Submit" />
+              <input type="submit" value="Submit this edit" />
             </form>
           </div>
         ) : null}
