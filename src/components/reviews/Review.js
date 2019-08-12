@@ -6,8 +6,8 @@ class Review extends Component {
     editMode: false
   };
 
-  handleDeleteClick = () => {
-    // e.preventDefault();
+  handleDeleteClick = e => {
+    e.preventDefault();
     this.props.deleteReview(this.props.review.id);
   };
 
