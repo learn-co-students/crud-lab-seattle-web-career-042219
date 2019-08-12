@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 
 class Review extends Component {
-  state = {
-    text: "",
-    editMode: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: "",
+      editMode: false
+    };
+  }
 
   handleDeleteClick = e => {
     e.preventDefault();
@@ -14,7 +17,7 @@ class Review extends Component {
   handleEditClick = e => {
     e.preventDefault();
     const review = this.props.reviews.find(
-      review => review.id === e.target.datastet.id
+      review => review.id === e.target.dataset.id
     );
     this.setState({ text: review.text, editMode: true });
   };
@@ -39,14 +42,14 @@ class Review extends Component {
     return (
       <div>
         <li>{review.text}</li>
-        <button onClick={this.handleDeleteClick}> X </button>
+        <button onClick={this.handleDeleteClick}> Delete </button>
         <button onClick={this.handleEditClick} data-id={review.id}>
           {" "}
           Edit{" "}
         </button>
         {this.state.editMode ? (
           <div>
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleOnSubmit}>
               <label htmlFor="the-submit">Edit: </label>
               <input
                 id="the-submit"

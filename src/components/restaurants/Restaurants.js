@@ -5,7 +5,7 @@ class Restaurants extends Component {
   render() {
     let restaurantsList;
     const { restaurants } = this.props;
-    if (restaurants !== []) {
+    if (restaurants && restaurants !== []) {
       restaurantsList = restaurants.map(restaurant => {
         return (
           <Restaurant

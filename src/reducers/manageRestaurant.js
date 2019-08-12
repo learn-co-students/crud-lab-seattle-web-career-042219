@@ -43,12 +43,19 @@ export default function manageRestaurants(
       return { ...state, reviews: [...state.reviews, newReview] };
     case "DELETE_REVIEW":
       return {
+        ...state,
         reviews: state.reviews.filter(review => review.id !== action.id)
       };
+
+    //   const newReviews = state.reviews.filter(
+    //     review => review.id !== action.id
+    //   );
+    //   return { ...state, reviews: newReviews };
     case "UPDATE_REVIEW":
       const updatedReview = {
         text: action.review.text,
-        id: action.review.id
+        id: action.review.id,
+        restaurantId: action.review.restaurantId
       };
       return {
         ...state,

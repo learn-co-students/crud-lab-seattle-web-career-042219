@@ -6,7 +6,6 @@ class Reviews extends Component {
     let reviewsList;
     const { reviews, restaurantId } = this.props;
     if (reviews && reviews !== []) {
-      debugger;
       const filteredReviews = reviews.filter(
         review => review.restaurantId === this.props.restaurantId
       );

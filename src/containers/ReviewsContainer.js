@@ -28,7 +28,7 @@ const mapStateToProps = ({ reviews }) => {
 
 const mapDispatchToProps = dispatch => ({
   addReview: review => dispatch({ type: "ADD_REVIEW", review }),
-  deleteReview: id => dispatch({ type: "DELETE+REVIEW", id }),
+  deleteReview: id => dispatch({ type: "DELETE_REVIEW", id }),
   updateReview: review => dispatch({ type: "UPDATE_REVIEW", review })
 });
 
