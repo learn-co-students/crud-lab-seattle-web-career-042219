@@ -46,11 +46,6 @@ export default function manageRestaurants(
         ...state,
         reviews: state.reviews.filter(review => review.id !== action.id)
       };
-
-    //   const newReviews = state.reviews.filter(
-    //     review => review.id !== action.id
-    //   );
-    //   return { ...state, reviews: newReviews };
     case "UPDATE_REVIEW":
       const updatedReview = {
         text: action.review.text,
